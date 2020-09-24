@@ -4,7 +4,7 @@
 #
 Name     : uget
 Version  : 2.2.3.1
-Release  : 3
+Release  : 4
 URL      : https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
 Source0  : https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
 Summary  : GTK+ download manager featuring download classification and HTML import
