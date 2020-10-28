@@ -4,10 +4,10 @@
 #
 Name     : uget
 Version  : 2.2.3.1
-Release  : 4
+Release  : 5
 URL      : https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
 Source0  : https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
-Summary  : GTK+ download manager featuring download classification and HTML import
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: uget-bin = %{version}-%{release}
@@ -78,17 +78,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578160786
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603920967
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
-%configure --disable-static
+%configure --disable-static CFLAGS="$CFLAGS -fcommon"
 make  %{?_smp_mflags}
 
 %check
@@ -96,10 +95,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1578160786
+export SOURCE_DATE_EPOCH=1603920967
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/uget
 cp %{_builddir}/uget-2.2.3/COPYING %{buildroot}/usr/share/package-licenses/uget/e60c2e780886f95df9c9ee36992b8edabec00bcc
