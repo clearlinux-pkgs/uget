@@ -4,7 +4,7 @@
 #
 Name     : uget
 Version  : 2.2.3.1
-Release  : 5
+Release  : 6
 URL      : https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
 Source0  : https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz
 Summary  : No detailed summary available
@@ -18,7 +18,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : curl-dev
 BuildRequires : gettext
 BuildRequires : intltool
-BuildRequires : nghttp2-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(appindicator3-0.1)
 BuildRequires : pkgconfig(glib-2.0)
@@ -78,15 +77,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603920967
+export SOURCE_DATE_EPOCH=1663024261
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static CFLAGS="$CFLAGS -fcommon"
 make  %{?_smp_mflags}
 
@@ -98,10 +97,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1603920967
+export SOURCE_DATE_EPOCH=1663024261
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/uget
-cp %{_builddir}/uget-2.2.3/COPYING %{buildroot}/usr/share/package-licenses/uget/e60c2e780886f95df9c9ee36992b8edabec00bcc
+cp %{_builddir}/uget-2.2.3/COPYING %{buildroot}/usr/share/package-licenses/uget/e60c2e780886f95df9c9ee36992b8edabec00bcc || :
 %make_install
 %find_lang uget
 
